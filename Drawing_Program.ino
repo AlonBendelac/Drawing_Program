@@ -15,7 +15,8 @@ void loop () {
   const float x, y;
   
   update_pen_state ();
-  update_x_and_y ();
+  update_x ();
+  update_y ();
   
   Blink++;
   Blink (x, y);
@@ -32,6 +33,14 @@ void update_pen_state () {
   else if (check_z () == 1) {
     pen_state = DOWN;
   }
+}
+
+void update_x () {
+  
+}
+
+void update_y () {
+  
 }
 
 void Blink (float x, float y) {
