@@ -10,9 +10,9 @@ void setup () {
 }
 
 void loop () {
-  const int Blink = 0;
-  const int z;
-  const float x, y;
+  static int Blink = 0;
+  static int z;
+  static float x, y;
   
   update_pen_state ();
   update_x ();
