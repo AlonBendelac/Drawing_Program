@@ -32,7 +32,6 @@ void setup () {
 
 void loop () {
   static int Blink = 0;
-  static int z;
   static int x, y;
   
   fillScreen(WHITE);
