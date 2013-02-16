@@ -1,6 +1,12 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_GFX.cpp>
 
+#include <Joystick.h>
+#include <Joystick.cpp>
+
+Adafruit_GFX Screen;
+Joystick Joystick;
+
 typedef enum PEN_STATES {PEN_UP, PEN_DOWN};
 
 PEN_STATES pen_state;
@@ -27,14 +33,14 @@ void make_dot (int x, int y);
 
 void setup () {
   fillScreen(WHITE);
-  setCursor(MID_SCREEN_X, MID_SCREEN_Y);
+  Screen.setCursor(MID_SCREEN_X, MID_SCREEN_Y);
 }
 
 void loop () {
   static int Blink = 0;
   static int x, y;
   
-  fillScreen(WHITE);
+  Screen.fillScreen(WHITE);
   
   update_pen_state (&pen_state);
   update_x (&x);
@@ -59,16 +65,16 @@ void update_pen_state (PEN_STATES * pen_state) {
 
 void update_x (int * x) {
   // set the x value
-  *x = ;
+  *x = 84 - Joystick.GetX();
 }
 
 void update_y (int * y) {
   // set the y value
-  *y = ;
+  *y = 48 - Joystick.GetY();
 }
 
 boolean PenIsDown () {
-  if (/*joystick held down*/) {
+  if (Joystick.IsPressed) {
     return true;
   }
   else {
@@ -78,13 +84,13 @@ boolean PenIsDown () {
 
 void Blink (int x, int y) {
   if (Blink % 2 == 0) {
-    drawPixel(x, y, WHITE);
+    Screen.drawPixel(x, y, WHITE);
   }
   else {
-    drawPixel(x, y, BLACK);
+    Screen.drawPixel(x, y, BLACK);
   }  
 }
 
 void make_dot (int x, int y) {
-  drawPixel(x, y, BLACK);
+  Screen.drawPixel(x, y, BLACK);
 }
